@@ -1,0 +1,2 @@
+org.springframework.test.context.ContextCustomizerFactory = zw.co.ema.config.\
+    SqlTestContainersSpringContextCustomizerFactory
