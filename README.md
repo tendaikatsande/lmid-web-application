@@ -1,4 +1,4 @@
-# LmidApplication
+# jhipster
 
 This application was generated using JHipster 8.0.0-beta.2, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.0.0-beta.2](https://www.jhipster.tech/documentation-archive/v8.0.0-beta.2).
 
@@ -106,7 +106,7 @@ docker compose -f src/main/docker/jhipster-control-center.yml up
 
 ### Packaging as jar
 
-To build the final jar and optimize the LmidApplication application for production, run:
+To build the final jar and optimize the jhipster application for production, run:
 
 ```
 ./mvnw -Pprod clean verify

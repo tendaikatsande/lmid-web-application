@@ -1,12 +1,12 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
-name: lmidapplication
+name: jhipster
 services:
   postgresql:
     image: postgres:15.3
     # volumes:
-    #   - ~/volumes/jhipster/LmidApplication/postgresql/:/var/lib/postgresql/data/
+    #   - ~/volumes/jhipster/jhipster/postgresql/:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=LmidApplication
+      - POSTGRES_USER=jhipster
       - POSTGRES_PASSWORD=
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:

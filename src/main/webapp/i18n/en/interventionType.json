@@ -1,0 +1,26 @@
+{
+  "jhipsterApp": {
+    "interventionType": {
+      "home": {
+        "title": "Intervention Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Intervention Type",
+        "createOrEditLabel": "Create or edit a Intervention Type",
+        "notFound": "No Intervention Types found"
+      },
+      "created": "A new Intervention Type is created with identifier {{ param }}",
+      "updated": "A Intervention Type is updated with identifier {{ param }}",
+      "deleted": "A Intervention Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Intervention Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Intervention Type"
+      },
+      "id": "ID",
+      "name": "Name",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date"
+    }
+  }
+}

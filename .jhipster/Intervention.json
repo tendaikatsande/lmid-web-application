@@ -1,0 +1,70 @@
+{
+  "applications": ["jhipster"],
+  "changelogDate": "20230730145225",
+  "entityTableName": "intervention",
+  "fields": [
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "targetArea",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "targetDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "achievedArea",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "costOfIntervention",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Intervention",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "interventionType",
+      "relationshipName": "type",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "project",
+      "relationshipName": "project",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "district",
+      "relationshipName": "location",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "ward",
+      "relationshipName": "ward",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

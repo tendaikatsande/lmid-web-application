@@ -1,8 +1,9 @@
 {
   "generator-jhipster": {
+    "applicationIndex": 0,
     "applicationType": "monolith",
     "authenticationType": "jwt",
-    "baseName": "LmidApplication",
+    "baseName": "jhipster",
     "blueprints": [],
     "buildTool": "maven",
     "cacheProvider": "hazelcast",
@@ -19,7 +20,7 @@
     "enableHibernateCache": true,
     "enableSwaggerCodegen": false,
     "enableTranslation": true,
-    "entities": [],
+    "entities": ["Intervention", "InterventionType", "Project", "Funder", "Sector", "Province", "District", "Ward", "InterventionFunder"],
     "entitySuffix": "",
     "gitCompany": "",
     "jhiPrefix": "jhi",

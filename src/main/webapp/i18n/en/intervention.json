@@ -1,0 +1,34 @@
+{
+  "jhipsterApp": {
+    "intervention": {
+      "home": {
+        "title": "Interventions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Intervention",
+        "createOrEditLabel": "Create or edit a Intervention",
+        "notFound": "No Interventions found"
+      },
+      "created": "A new Intervention is created with identifier {{ param }}",
+      "updated": "A Intervention is updated with identifier {{ param }}",
+      "deleted": "A Intervention is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Intervention {{ id }}?"
+      },
+      "detail": {
+        "title": "Intervention"
+      },
+      "id": "ID",
+      "startDate": "Start Date",
+      "targetArea": "Target Area",
+      "targetDate": "Target Date",
+      "achievedArea": "Achieved Area",
+      "costOfIntervention": "Cost Of Intervention",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "type": "Type",
+      "project": "Project",
+      "location": "Location",
+      "ward": "Ward"
+    }
+  }
+}

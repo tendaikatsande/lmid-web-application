@@ -1,0 +1,34 @@
+{
+  "applications": ["jhipster"],
+  "changelogDate": "20230730145230",
+  "entityTableName": "province",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lng",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "lat",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Province",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

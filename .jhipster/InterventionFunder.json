@@ -1,0 +1,30 @@
+{
+  "applications": ["jhipster"],
+  "changelogDate": "20230730145233",
+  "entityTableName": "intervention_funder",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "InterventionFunder",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "intervention",
+      "relationshipName": "intervention",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "funder",
+      "relationshipName": "funder",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

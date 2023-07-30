@@ -17,12 +17,12 @@ eureka:
   client:
     enabled: false
   instance:
-    appname: LmidApplication
-    instanceId: LmidApplication:${spring.application.instance-id:${random.value}}
+    appname: jhipster
+    instanceId: jhipster:${spring.application.instance-id:${random.value}}
 
 spring:
   application:
-    name: LmidApplication
+    name: jhipster
   cloud:
     config:
       enabled: false
@@ -40,13 +40,13 @@ spring:
     basename: i18n/messages
   task:
     execution:
-      thread-name-prefix: lmid-application-task-
+      thread-name-prefix: jhipster-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: lmid-application-scheduling-
+      thread-name-prefix: jhipster-scheduling-
       pool:
         size: 20
   thymeleaf:
@@ -63,9 +63,9 @@ server:
 # ===================================================================
 jhipster:
   clientApp:
-    name: 'lmidApplicationApp'
+    name: 'jhipsterApp'
   mail:
-    from: LmidApplication@localhost.com
+    from: jhipster@localhost.com
     base-url: http://127.0.0.1:8080
   logging:
     # To test json console appender

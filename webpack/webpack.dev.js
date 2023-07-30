@@ -99,7 +99,7 @@ module.exports = async options =>
         }
       ),
       new WebpackNotifierPlugin({
-        title: 'Lmid Application',
+        title: 'JHipster',
         contentImage: path.join(__dirname, 'logo-jhipster.png'),
       }),
     ].filter(Boolean),

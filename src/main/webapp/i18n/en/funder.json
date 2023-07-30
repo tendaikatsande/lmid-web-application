@@ -1,0 +1,27 @@
+{
+  "jhipsterApp": {
+    "funder": {
+      "home": {
+        "title": "Funders",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Funder",
+        "createOrEditLabel": "Create or edit a Funder",
+        "notFound": "No Funders found"
+      },
+      "created": "A new Funder is created with identifier {{ param }}",
+      "updated": "A Funder is updated with identifier {{ param }}",
+      "deleted": "A Funder is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Funder {{ id }}?"
+      },
+      "detail": {
+        "title": "Funder"
+      },
+      "id": "ID",
+      "name": "Name",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "sector": "Sector"
+    }
+  }
+}

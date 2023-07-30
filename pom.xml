@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>zw.co.ema</groupId>
-    <artifactId>lmid-application</artifactId>
+    <artifactId>jhipster</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Lmid Application</name>
-    <description>Description for Lmid Application</description>
+    <name>JHipster</name>
+    <description>Description for JHipster</description>
 
     <properties>
         <!--
@@ -24,7 +24,7 @@
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <start-class>zw.co.ema.LmidApplicationApp</start-class>
+        <start-class>zw.co.ema.JhipsterApp</start-class>
         <argLine>-Djava.security.egd=file:/dev/./urandom -Xmx1G</argLine>
         <m2e.apt.activation>jdt_apt</m2e.apt.activation>
         <run.addResources>false</run.addResources>
@@ -420,7 +420,7 @@
                             </platforms>
                         </from>
                         <to>
-                            <image>lmidapplication:latest</image>
+                            <image>jhipster:latest</image>
                         </to>
                         <container>
                             <entrypoint>
@@ -853,8 +853,8 @@
                 <!-- default Spring profiles -->
                 <spring.profiles.active>dev${profile.tls}${profile.no-liquibase}</spring.profiles.active>
                 <profile.test>testdev</profile.test>
-                <liquibase-plugin.url>jdbc:postgresql://localhost:5432/LmidApplication</liquibase-plugin.url>
-                <liquibase-plugin.username>LmidApplication</liquibase-plugin.username>
+                <liquibase-plugin.url>jdbc:postgresql://localhost:5432/jhipster</liquibase-plugin.url>
+                <liquibase-plugin.username>jhipster</liquibase-plugin.username>
                 <liquibase-plugin.password/>
             </properties>
             <dependencies>
@@ -961,8 +961,8 @@
                 <!-- default Spring profiles -->
                 <spring.profiles.active>prod${profile.api-docs}${profile.tls}${profile.e2e}${profile.no-liquibase}</spring.profiles.active>
                 <profile.test>testprod</profile.test>
-                <liquibase-plugin.url>jdbc:postgresql://localhost:5432/LmidApplication</liquibase-plugin.url>
-                <liquibase-plugin.username>LmidApplication</liquibase-plugin.username>
+                <liquibase-plugin.url>jdbc:postgresql://localhost:5432/jhipster</liquibase-plugin.url>
+                <liquibase-plugin.username>jhipster</liquibase-plugin.username>
                 <liquibase-plugin.password/>
             </properties>
             <build>
