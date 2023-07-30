@@ -1,0 +1,66 @@
+entity Intervention {
+  startDate LocalDate,
+  targetArea Integer,
+  targetDate LocalDate,
+  achievedArea Integer,
+  costOfIntervention BigDecimal
+}
+
+entity InterventionType {
+  name String required
+}
+
+entity Project {
+  name String required,
+  description String,
+  startDate LocalDate,
+  endDate LocalDate
+}
+
+entity Funder {
+  name String required
+}
+
+entity Sector {
+  name String required
+}
+
+entity Province {
+  name String required,
+  lng Float,
+  lat Float
+}
+
+entity District {
+  name String required,
+  lng Float,
+  lat Float
+}
+
+entity Ward {
+  name String required,
+  lng Float,
+  lat Float
+}
+
+entity InterventionFunder {
+  id Integer
+}
+
+relationship OneToOne {
+  User{role(name)} to Role
+}
+
+relationship ManyToOne {
+  Intervention{type(name)} to InterventionType,
+  Intervention{project(name)} to Project,
+  Intervention{location(name)} to District,
+  Intervention{ward(name)} to Ward,
+  District{province(name)} to Province,
+  Ward{district(name)} to District,
+  Funder{sector(name)} to Sector,
+  InterventionFunder{intervention} to Intervention,
+  InterventionFunder{funder} to Funder
+}
+
+paginate all with pagination
