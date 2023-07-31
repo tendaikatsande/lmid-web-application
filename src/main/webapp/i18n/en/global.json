@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "LMID",
+    "title": "Jhipster",
     "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
     "menu": {
       "home": "Home",
@@ -16,6 +16,7 @@
         "district": "District",
         "ward": "Ward",
         "interventionFunder": "Intervention Funder",
+        "applicationUser": "Application User",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

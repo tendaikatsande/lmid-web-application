@@ -22,7 +22,6 @@ import zw.co.ema.domain.Funder;
 import zw.co.ema.domain.Intervention;
 import zw.co.ema.domain.InterventionFunder;
 import zw.co.ema.repository.InterventionFunderRepository;
-import zw.co.ema.service.criteria.InterventionFunderCriteria;
 
 /**
  * Integration tests for the {@link InterventionFunderResource} REST controller.

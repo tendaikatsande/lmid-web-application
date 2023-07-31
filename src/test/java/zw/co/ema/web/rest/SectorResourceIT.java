@@ -22,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 import zw.co.ema.IntegrationTest;
 import zw.co.ema.domain.Sector;
 import zw.co.ema.repository.SectorRepository;
-import zw.co.ema.service.criteria.SectorCriteria;
 
 /**
  * Integration tests for the {@link SectorResource} REST controller.

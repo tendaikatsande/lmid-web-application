@@ -1,6 +1,5 @@
 package zw.co.ema.service;
 
-import jakarta.persistence.criteria.JoinType;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

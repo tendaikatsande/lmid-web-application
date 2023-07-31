@@ -12,6 +12,7 @@ import Province from './province';
 import District from './district';
 import Ward from './ward';
 import InterventionFunder from './intervention-funder';
+import ApplicationUser from './application-user';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 export default () => {
@@ -28,6 +29,7 @@ export default () => {
         <Route path="district/*" element={<District />} />
         <Route path="ward/*" element={<Ward />} />
         <Route path="intervention-funder/*" element={<InterventionFunder />} />
+        <Route path="application-user/*" element={<ApplicationUser />} />
         {/* jhipster-needle-add-route-path - JHipster will add routes here */}
       </ErrorBoundaryRoutes>
     </div>

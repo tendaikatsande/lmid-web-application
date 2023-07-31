@@ -34,6 +34,9 @@ const EntitiesMenu = () => {
       <MenuItem icon="asterisk" to="/intervention-funder">
         <Translate contentKey="global.menu.entities.interventionFunder" />
       </MenuItem>
+      <MenuItem icon="asterisk" to="/application-user">
+        <Translate contentKey="global.menu.entities.applicationUser" />
+      </MenuItem>
       {/* jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here */}
     </>
   );

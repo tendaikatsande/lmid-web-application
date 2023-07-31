@@ -6,7 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
-import zw.co.ema.JhipsterApp;
 import zw.co.ema.config.AsyncSyncConfiguration;
 import zw.co.ema.config.EmbeddedSQL;
 

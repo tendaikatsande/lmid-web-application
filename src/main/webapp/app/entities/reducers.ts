@@ -7,6 +7,7 @@ import province from 'app/entities/province/province.reducer';
 import district from 'app/entities/district/district.reducer';
 import ward from 'app/entities/ward/ward.reducer';
 import interventionFunder from 'app/entities/intervention-funder/intervention-funder.reducer';
+import applicationUser from 'app/entities/application-user/application-user.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 const entitiesReducers = {
@@ -19,6 +20,7 @@ const entitiesReducers = {
   district,
   ward,
   interventionFunder,
+  applicationUser,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
 };
 

@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 import zw.co.ema.IntegrationTest;
 import zw.co.ema.domain.Project;
 import zw.co.ema.repository.ProjectRepository;
-import zw.co.ema.service.criteria.ProjectCriteria;
 
 /**
  * Integration tests for the {@link ProjectResource} REST controller.

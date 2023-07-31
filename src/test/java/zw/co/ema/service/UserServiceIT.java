@@ -15,15 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.auditing.AuditingHandler;
 import org.springframework.data.auditing.DateTimeProvider;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 import tech.jhipster.security.RandomUtil;
 import zw.co.ema.IntegrationTest;
-import zw.co.ema.config.Constants;
 import zw.co.ema.domain.User;
 import zw.co.ema.repository.UserRepository;
-import zw.co.ema.service.dto.AdminUserDTO;
 
 /**
  * Integration tests for {@link UserService}.

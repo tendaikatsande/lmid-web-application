@@ -25,7 +25,6 @@ import zw.co.ema.security.AuthoritiesConstants;
 import zw.co.ema.service.UserService;
 import zw.co.ema.service.dto.AdminUserDTO;
 import zw.co.ema.service.dto.PasswordChangeDTO;
-import zw.co.ema.service.dto.UserDTO;
 import zw.co.ema.web.rest.vm.KeyAndPasswordVM;
 import zw.co.ema.web.rest.vm.ManagedUserVM;
 

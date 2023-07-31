@@ -22,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 import zw.co.ema.IntegrationTest;
 import zw.co.ema.domain.Province;
 import zw.co.ema.repository.ProvinceRepository;
-import zw.co.ema.service.criteria.ProvinceCriteria;
 
 /**
  * Integration tests for the {@link ProvinceResource} REST controller.

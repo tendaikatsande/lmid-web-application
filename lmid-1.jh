@@ -5,7 +5,7 @@ entity ApplicationUser {
 
 
 relationship OneToOne {
-    ApplicationUser{internalUser} to User
+    ApplicationUser to User with builtInEntity
 }
 
 entity Intervention {

@@ -22,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 import zw.co.ema.IntegrationTest;
 import zw.co.ema.domain.InterventionType;
 import zw.co.ema.repository.InterventionTypeRepository;
-import zw.co.ema.service.criteria.InterventionTypeCriteria;
 
 /**
  * Integration tests for the {@link InterventionTypeResource} REST controller.
