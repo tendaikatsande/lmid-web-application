@@ -1,0 +1,44 @@
+{
+  "applications": ["jhipster"],
+  "changelogDate": "20230731002334",
+  "entityTableName": "application_user",
+  "fields": [
+    {
+      "fieldName": "provinceId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "districtId",
+      "fieldType": "Long"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "ApplicationUser",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "applicationUser",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityField": "provinceId",
+      "otherEntityName": "province",
+      "relationshipName": "province",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "districtId",
+      "otherEntityName": "district",
+      "relationshipName": "district",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
