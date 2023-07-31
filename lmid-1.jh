@@ -1,6 +1,5 @@
 entity ApplicationUser {
-    provinceId Long,
-    districtId Long
+
 }
 
 
