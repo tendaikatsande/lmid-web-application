@@ -114,9 +114,9 @@ export const Intervention = () => {
                 <th className="hand" onClick={sort('id')}>
                   <Translate contentKey="jhipsterApp.intervention.id">ID</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('id')} />
                 </th>
-              <th>
-                <Translate contentKey="jhipsterApp.intervention.type">Intervention</Translate> <FontAwesomeIcon icon="sort" />
-              </th>
+                <th>
+                  <Translate contentKey="jhipsterApp.intervention.type">Intervention</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('startDate')}>
                   <Translate contentKey="jhipsterApp.intervention.startDate">Start Date</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('startDate')} />
@@ -138,7 +138,6 @@ export const Intervention = () => {
                   <FontAwesomeIcon icon={getSortIconByFieldName('costOfIntervention')} />
                 </th>
 
-
                 <th>
                   <Translate contentKey="jhipsterApp.intervention.project">Project</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -159,9 +158,9 @@ export const Intervention = () => {
                       {intervention.id}
                     </Button>
                   </td>
-<td>
-{intervention.type ? <Link to={`/intervention-type/${intervention.type.name}`}>{intervention.type.name}</Link> : ''}
-  </td>
+                  <td>
+                    {intervention.type ? <Link to={`/intervention-type/${intervention.type.name}`}>{intervention.type.name}</Link> : ''}
+                  </td>
                   <td>
                     {intervention.startDate ? (
                       <TextFormat type="date" value={intervention.startDate} format={APP_LOCAL_DATE_FORMAT} />
@@ -176,8 +175,9 @@ export const Intervention = () => {
                   <td>{intervention.achievedArea}ha</td>
                   <td>{intervention.costOfIntervention}</td>
 
-
-                  <td>{intervention.project ? <Link to={`/project/${intervention.project.name}`}>{intervention.project.name}</Link> : ''}</td>
+                  <td>
+                    {intervention.project ? <Link to={`/project/${intervention.project.name}`}>{intervention.project.name}</Link> : ''}
+                  </td>
                   <td>
                     {intervention.location ? <Link to={`/district/${intervention.location.id}`}>{intervention.location.name}</Link> : ''}
                   </td>

@@ -1,66 +1,99 @@
+
+
 entity Intervention {
-  startDate LocalDate,
-  targetArea Integer,
-  targetDate LocalDate,
-  achievedArea Integer,
-  costOfIntervention BigDecimal
+    startDate LocalDate required,
+    targetArea Integer required,
+    targetDate LocalDate required,
+    achievedArea Integer required,
+    costOfIntervention BigDecimal required,
+    createdDate Instant,
+    lastModifiedDate Instant
 }
 
 entity InterventionType {
-  name String required
+    name String required,
+    createdDate Instant,
+    lastModifiedDate Instant
 }
 
 entity Project {
-  name String required,
-  description String,
-  startDate LocalDate,
-  endDate LocalDate
+    name String required,
+    description String required,
+    startDate LocalDate required,
+    endDate LocalDate required,
+    createdDate Instant ,
+    lastModifiedDate Instant
 }
 
 entity Funder {
-  name String required
+    name String required required,
+    createdDate Instant,
+    lastModifiedDate Instant
 }
 
 entity Sector {
-  name String required
+    name String required,
+    createdDate Instant,
+    lastModifiedDate Instant
 }
 
 entity Province {
-  name String required,
-  lng Float,
-  lat Float
+    name String required,
+    lng Float required,
+    lat Float required,
+    createdDate Instant,
+    lastModifiedDate Instant
 }
 
 entity District {
-  name String required,
-  lng Float,
-  lat Float
+    name String required,
+    lng Float required,
+    lat Float required,
+    createdDate Instant,
+    lastModifiedDate Instant
 }
 
 entity Ward {
-  name String required,
-  lng Float,
-  lat Float
+    name String required,
+    lng Float required,
+    lat Float required,
+    createdDate Instant,
+    lastModifiedDate Instant
 }
 
 entity InterventionFunder {
-  id Integer
+    id Long
+}
+entity ApplicationUser {
+}
+relationship ManyToOne {
+    Intervention{type(name)} to InterventionType,
+    Intervention{project(name)} to Project,
+    Intervention{location(name)} to District,
+    Intervention{ward(name)} to Ward,
+    District{province(name)} to Province,
+    Ward{district(name)} to District,
+    Funder{sector(name)} to Sector,
+    InterventionFunder{intervention} to Intervention,
+    InterventionFunder{funder} to Funder,
+    ApplicationUser{province(provinceId)} to Province,
+    ApplicationUser{district(districtId)} to District
 }
 
 relationship OneToOne {
-  User{role(name)} to Role
+    ApplicationUser to User with builtInEntity
 }
 
-relationship ManyToOne {
-  Intervention{type(name)} to InterventionType,
-  Intervention{project(name)} to Project,
-  Intervention{location(name)} to District,
-  Intervention{ward(name)} to Ward,
-  District{province(name)} to Province,
-  Ward{district(name)} to District,
-  Funder{sector(name)} to Sector,
-  InterventionFunder{intervention} to Intervention,
-  InterventionFunder{funder} to Funder
-}
+dto * with mapstruct
+paginate * with pagination
+filter *
+//search * with elasticsearch
 
-paginate all with pagination
+application {
+    config {
+        databaseType sql,
+        devDatabaseType postgresql,
+        prodDatabaseType postgresql
+    }
+    entities *
+}
