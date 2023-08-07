@@ -26,11 +26,7 @@ node {
     }
 
     stage('packaging') {
-        sh "./mvnw -ntp verify -P-webapp -Pprod -DskipTests"
+        sh "./mvnw -ntp verify -P-webapp -Pprod -DskipTests jib:dockerBuild"
         archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-    }
-
-    stage('build docker image') {
-            sh "sudo docker build ."
     }
 }
