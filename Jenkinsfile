@@ -31,6 +31,7 @@ node {
     }
 
     stage("compose docker container"){
-        sh "docker compose ./src/main/docker/app.yml up -d"
+        sh "docker-compose -f ./src/main/docker/app.yml up -d
+"
     }
 }
