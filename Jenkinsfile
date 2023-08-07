@@ -29,4 +29,8 @@ node {
         sh "./mvnw -ntp verify -P-webapp -Pprod -DskipTests jib:dockerBuild"
         archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
     }
+
+    stage("compose docker container"){
+        sh "docker compose ./src/main/docker/app.yml up -d"
+    }
 }
