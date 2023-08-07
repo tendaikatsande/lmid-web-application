@@ -4,11 +4,7 @@
   "entityTableName": "application_user",
   "fields": [
     {
-      "fieldName": "provinceId",
-      "fieldType": "Long"
-    },
-    {
-      "fieldName": "districtId",
+      "fieldName": "id",
       "fieldType": "Long"
     }
   ],

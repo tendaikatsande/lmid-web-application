@@ -29,13 +29,16 @@ public class Project implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "description")
+    @NotNull
+    @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "start_date")
+    @NotNull
+    @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
 
-    @Column(name = "end_date")
+    @NotNull
+    @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
 
     @Column(name = "created_date")

@@ -23,11 +23,11 @@ public class ApplicationUserCriteria implements Serializable, Criteria {
 
     private LongFilter id;
 
+    private LongFilter userId;
+
     private LongFilter provinceId;
 
     private LongFilter districtId;
-
-    private LongFilter userId;
 
     private Boolean distinct;
 
@@ -35,9 +35,9 @@ public class ApplicationUserCriteria implements Serializable, Criteria {
 
     public ApplicationUserCriteria(ApplicationUserCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
+        this.userId = other.userId == null ? null : other.userId.copy();
         this.provinceId = other.provinceId == null ? null : other.provinceId.copy();
         this.districtId = other.districtId == null ? null : other.districtId.copy();
-        this.userId = other.userId == null ? null : other.userId.copy();
         this.distinct = other.distinct;
     }
 
@@ -60,9 +60,6 @@ public class ApplicationUserCriteria implements Serializable, Criteria {
     public void setId(LongFilter id) {
         this.id = id;
     }
-
-
-
 
     public LongFilter getUserId() {
         return userId;
@@ -128,16 +125,16 @@ public class ApplicationUserCriteria implements Serializable, Criteria {
         final ApplicationUserCriteria that = (ApplicationUserCriteria) o;
         return (
             Objects.equals(id, that.id) &&
+            Objects.equals(userId, that.userId) &&
             Objects.equals(provinceId, that.provinceId) &&
             Objects.equals(districtId, that.districtId) &&
-            Objects.equals(userId, that.userId) &&
             Objects.equals(distinct, that.distinct)
         );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, provinceId, districtId, userId, distinct);
+        return Objects.hash(id, userId, provinceId, districtId, distinct);
     }
 
     // prettier-ignore
@@ -145,9 +142,9 @@ public class ApplicationUserCriteria implements Serializable, Criteria {
     public String toString() {
         return "ApplicationUserCriteria{" +
             (id != null ? "id=" + id + ", " : "") +
+            (userId != null ? "userId=" + userId + ", " : "") +
             (provinceId != null ? "provinceId=" + provinceId + ", " : "") +
             (districtId != null ? "districtId=" + districtId + ", " : "") +
-            (userId != null ? "userId=" + userId + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";
     }

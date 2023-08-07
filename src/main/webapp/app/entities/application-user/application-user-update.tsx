@@ -102,24 +102,10 @@ export const ApplicationUserUpdate = () => {
                   required
                   readOnly
                   id="application-user-id"
-                  label={translate('global.field.id')}
+                  label={translate('jhipsterApp.applicationUser.id')}
                   validate={{ required: true }}
                 />
               ) : null}
-              <ValidatedField
-                label={translate('jhipsterApp.applicationUser.provinceId')}
-                id="application-user-provinceId"
-                name="provinceId"
-                data-cy="provinceId"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('jhipsterApp.applicationUser.districtId')}
-                id="application-user-districtId"
-                name="districtId"
-                data-cy="districtId"
-                type="text"
-              />
               <ValidatedField
                 id="application-user-user"
                 name="user"

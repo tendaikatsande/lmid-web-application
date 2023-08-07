@@ -18,13 +18,13 @@
                 <constraints nullable="false" />
             </column>
             <column name="description" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="start_date" type="date">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="end_date" type="date">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="created_date" type="${datetimeType}">
                 <constraints nullable="true" />

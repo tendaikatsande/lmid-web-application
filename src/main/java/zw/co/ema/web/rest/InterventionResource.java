@@ -1,5 +1,7 @@
 package zw.co.ema.web.rest;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -62,7 +64,7 @@ public class InterventionResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/interventions")
-    public ResponseEntity<Intervention> createIntervention(@RequestBody Intervention intervention) throws URISyntaxException {
+    public ResponseEntity<Intervention> createIntervention(@Valid @RequestBody Intervention intervention) throws URISyntaxException {
         log.debug("REST request to save Intervention : {}", intervention);
         if (intervention.getId() != null) {
             throw new BadRequestAlertException("A new intervention cannot already have an ID", ENTITY_NAME, "idexists");
@@ -87,7 +89,7 @@ public class InterventionResource {
     @PutMapping("/interventions/{id}")
     public ResponseEntity<Intervention> updateIntervention(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody Intervention intervention
+        @Valid @RequestBody Intervention intervention
     ) throws URISyntaxException {
         log.debug("REST request to update Intervention : {}, {}", id, intervention);
         if (intervention.getId() == null) {
@@ -122,7 +124,7 @@ public class InterventionResource {
     @PatchMapping(value = "/interventions/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<Intervention> partialUpdateIntervention(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody Intervention intervention
+        @NotNull @RequestBody Intervention intervention
     ) throws URISyntaxException {
         log.debug("REST request to partial update Intervention partially : {}, {}", id, intervention);
         if (intervention.getId() == null) {

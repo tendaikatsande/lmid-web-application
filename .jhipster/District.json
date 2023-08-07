@@ -10,11 +10,13 @@
     },
     {
       "fieldName": "lng",
-      "fieldType": "Float"
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "lat",
-      "fieldType": "Float"
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "createdDate",

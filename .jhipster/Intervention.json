@@ -5,23 +5,28 @@
   "fields": [
     {
       "fieldName": "startDate",
-      "fieldType": "LocalDate"
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "targetArea",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "targetDate",
-      "fieldType": "LocalDate"
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "achievedArea",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "costOfIntervention",
-      "fieldType": "BigDecimal"
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "createdDate",

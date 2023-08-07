@@ -111,16 +111,8 @@ export const ApplicationUser = () => {
             <thead>
               <tr>
                 <th className="hand" onClick={sort('id')}>
-                  <Translate contentKey="jhipsterApp.applicationUser.id">ID</Translate>{' '}
+                  <Translate contentKey="jhipsterApp.applicationUser.id">Id</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('id')} />
-                </th>
-                <th className="hand" onClick={sort('provinceId')}>
-                  <Translate contentKey="jhipsterApp.applicationUser.provinceId">Province Id</Translate>{' '}
-                  <FontAwesomeIcon icon={getSortIconByFieldName('provinceId')} />
-                </th>
-                <th className="hand" onClick={sort('districtId')}>
-                  <Translate contentKey="jhipsterApp.applicationUser.districtId">District Id</Translate>{' '}
-                  <FontAwesomeIcon icon={getSortIconByFieldName('districtId')} />
                 </th>
                 <th>
                   <Translate contentKey="jhipsterApp.applicationUser.user">User</Translate> <FontAwesomeIcon icon="sort" />
@@ -142,8 +134,6 @@ export const ApplicationUser = () => {
                       {applicationUser.id}
                     </Button>
                   </td>
-                  <td>{applicationUser.provinceId}</td>
-                  <td>{applicationUser.districtId}</td>
                   <td>{applicationUser.user ? applicationUser.user.id : ''}</td>
                   <td>
                     {applicationUser.province ? (

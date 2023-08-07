@@ -180,6 +180,91 @@ class InterventionResourceIT {
 
     @Test
     @Transactional
+    void checkStartDateIsRequired() throws Exception {
+        int databaseSizeBeforeTest = interventionRepository.findAll().size();
+        // set the field null
+        intervention.setStartDate(null);
+
+        // Create the Intervention, which fails.
+
+        restInterventionMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(intervention)))
+            .andExpect(status().isBadRequest());
+
+        List<Intervention> interventionList = interventionRepository.findAll();
+        assertThat(interventionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkTargetAreaIsRequired() throws Exception {
+        int databaseSizeBeforeTest = interventionRepository.findAll().size();
+        // set the field null
+        intervention.setTargetArea(null);
+
+        // Create the Intervention, which fails.
+
+        restInterventionMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(intervention)))
+            .andExpect(status().isBadRequest());
+
+        List<Intervention> interventionList = interventionRepository.findAll();
+        assertThat(interventionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkTargetDateIsRequired() throws Exception {
+        int databaseSizeBeforeTest = interventionRepository.findAll().size();
+        // set the field null
+        intervention.setTargetDate(null);
+
+        // Create the Intervention, which fails.
+
+        restInterventionMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(intervention)))
+            .andExpect(status().isBadRequest());
+
+        List<Intervention> interventionList = interventionRepository.findAll();
+        assertThat(interventionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkAchievedAreaIsRequired() throws Exception {
+        int databaseSizeBeforeTest = interventionRepository.findAll().size();
+        // set the field null
+        intervention.setAchievedArea(null);
+
+        // Create the Intervention, which fails.
+
+        restInterventionMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(intervention)))
+            .andExpect(status().isBadRequest());
+
+        List<Intervention> interventionList = interventionRepository.findAll();
+        assertThat(interventionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkCostOfInterventionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = interventionRepository.findAll().size();
+        // set the field null
+        intervention.setCostOfIntervention(null);
+
+        // Create the Intervention, which fails.
+
+        restInterventionMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(intervention)))
+            .andExpect(status().isBadRequest());
+
+        List<Intervention> interventionList = interventionRepository.findAll();
+        assertThat(interventionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void getAllInterventions() throws Exception {
         // Initialize the database
         interventionRepository.saveAndFlush(intervention);

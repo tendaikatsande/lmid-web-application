@@ -2,6 +2,7 @@ package zw.co.ema.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -26,19 +27,24 @@ public class Intervention implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "start_date")
+    @NotNull
+    @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
 
-    @Column(name = "target_area")
+    @NotNull
+    @Column(name = "target_area", nullable = false)
     private Integer targetArea;
 
-    @Column(name = "target_date")
+    @NotNull
+    @Column(name = "target_date", nullable = false)
     private LocalDate targetDate;
 
-    @Column(name = "achieved_area")
+    @NotNull
+    @Column(name = "achieved_area", nullable = false)
     private Integer achievedArea;
 
-    @Column(name = "cost_of_intervention", precision = 21, scale = 2)
+    @NotNull
+    @Column(name = "cost_of_intervention", precision = 21, scale = 2, nullable = false)
     private BigDecimal costOfIntervention;
 
     @Column(name = "created_date")

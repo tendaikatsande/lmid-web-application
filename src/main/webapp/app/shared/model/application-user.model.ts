@@ -4,8 +4,6 @@ import { IDistrict } from 'app/shared/model/district.model';
 
 export interface IApplicationUser {
   id?: number;
-  provinceId?: number | null;
-  districtId?: number | null;
   user?: IUser | null;
   province?: IProvince | null;
   district?: IDistrict | null;

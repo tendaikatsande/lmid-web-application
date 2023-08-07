@@ -111,6 +111,9 @@ export const ProjectUpdate = () => {
                 name="description"
                 data-cy="description"
                 type="text"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                }}
               />
               <ValidatedField
                 label={translate('jhipsterApp.project.startDate')}
@@ -118,6 +121,9 @@ export const ProjectUpdate = () => {
                 name="startDate"
                 data-cy="startDate"
                 type="date"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                }}
               />
               <ValidatedField
                 label={translate('jhipsterApp.project.endDate')}
@@ -125,6 +131,9 @@ export const ProjectUpdate = () => {
                 name="endDate"
                 data-cy="endDate"
                 type="date"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                }}
               />
               <ValidatedField
                 label={translate('jhipsterApp.project.createdDate')}

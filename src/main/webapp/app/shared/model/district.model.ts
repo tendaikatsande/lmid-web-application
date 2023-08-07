@@ -4,8 +4,8 @@ import { IProvince } from 'app/shared/model/province.model';
 export interface IDistrict {
   id?: number;
   name?: string;
-  lng?: number | null;
-  lat?: number | null;
+  lng?: number;
+  lat?: number;
   createdDate?: string | null;
   lastModifiedDate?: string | null;
   province?: IProvince | null;

@@ -59,13 +59,6 @@ public class ApplicationUserService {
         return applicationUserRepository
             .findById(applicationUser.getId())
             .map(existingApplicationUser -> {
-                if (applicationUser.getProvince() != null) {
-                    existingApplicationUser.setProvince(applicationUser.getProvince() );
-                }
-                if (applicationUser.getDistrict() != null) {
-                    existingApplicationUser.setDistrict(applicationUser.getDistrict());
-                }
-
                 return existingApplicationUser;
             })
             .map(applicationUserRepository::save);

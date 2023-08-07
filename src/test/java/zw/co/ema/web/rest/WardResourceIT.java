@@ -175,6 +175,40 @@ class WardResourceIT {
 
     @Test
     @Transactional
+    void checkLngIsRequired() throws Exception {
+        int databaseSizeBeforeTest = wardRepository.findAll().size();
+        // set the field null
+        ward.setLng(null);
+
+        // Create the Ward, which fails.
+
+        restWardMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(ward)))
+            .andExpect(status().isBadRequest());
+
+        List<Ward> wardList = wardRepository.findAll();
+        assertThat(wardList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkLatIsRequired() throws Exception {
+        int databaseSizeBeforeTest = wardRepository.findAll().size();
+        // set the field null
+        ward.setLat(null);
+
+        // Create the Ward, which fails.
+
+        restWardMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(ward)))
+            .andExpect(status().isBadRequest());
+
+        List<Ward> wardList = wardRepository.findAll();
+        assertThat(wardList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void getAllWards() throws Exception {
         // Initialize the database
         wardRepository.saveAndFlush(ward);

@@ -3,8 +3,8 @@ import dayjs from 'dayjs';
 export interface IProvince {
   id?: number;
   name?: string;
-  lng?: number | null;
-  lat?: number | null;
+  lng?: number;
+  lat?: number;
   createdDate?: string | null;
   lastModifiedDate?: string | null;
 }

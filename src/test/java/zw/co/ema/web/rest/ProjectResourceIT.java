@@ -167,6 +167,57 @@ class ProjectResourceIT {
 
     @Test
     @Transactional
+    void checkDescriptionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = projectRepository.findAll().size();
+        // set the field null
+        project.setDescription(null);
+
+        // Create the Project, which fails.
+
+        restProjectMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(project)))
+            .andExpect(status().isBadRequest());
+
+        List<Project> projectList = projectRepository.findAll();
+        assertThat(projectList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkStartDateIsRequired() throws Exception {
+        int databaseSizeBeforeTest = projectRepository.findAll().size();
+        // set the field null
+        project.setStartDate(null);
+
+        // Create the Project, which fails.
+
+        restProjectMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(project)))
+            .andExpect(status().isBadRequest());
+
+        List<Project> projectList = projectRepository.findAll();
+        assertThat(projectList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkEndDateIsRequired() throws Exception {
+        int databaseSizeBeforeTest = projectRepository.findAll().size();
+        // set the field null
+        project.setEndDate(null);
+
+        // Create the Project, which fails.
+
+        restProjectMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(project)))
+            .andExpect(status().isBadRequest());
+
+        List<Project> projectList = projectRepository.findAll();
+        assertThat(projectList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void getAllProjects() throws Exception {
         // Initialize the database
         projectRepository.saveAndFlush(project);

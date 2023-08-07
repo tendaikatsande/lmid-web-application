@@ -41,14 +41,6 @@ import zw.co.ema.service.ApplicationUserService;
 @WithMockUser
 class ApplicationUserResourceIT {
 
-    private static final Long DEFAULT_PROVINCE_ID = 1L;
-    private static final Long UPDATED_PROVINCE_ID = 2L;
-    private static final Long SMALLER_PROVINCE_ID = 1L - 1L;
-
-    private static final Long DEFAULT_DISTRICT_ID = 1L;
-    private static final Long UPDATED_DISTRICT_ID = 2L;
-    private static final Long SMALLER_DISTRICT_ID = 1L - 1L;
-
     private static final String ENTITY_API_URL = "/api/application-users";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -79,7 +71,7 @@ class ApplicationUserResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static ApplicationUser createEntity(EntityManager em) {
-        ApplicationUser applicationUser = new ApplicationUser().provinceId(DEFAULT_PROVINCE_ID).districtId(DEFAULT_DISTRICT_ID);
+        ApplicationUser applicationUser = new ApplicationUser();
         return applicationUser;
     }
 
@@ -90,7 +82,7 @@ class ApplicationUserResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static ApplicationUser createUpdatedEntity(EntityManager em) {
-        ApplicationUser applicationUser = new ApplicationUser().provinceId(UPDATED_PROVINCE_ID).districtId(UPDATED_DISTRICT_ID);
+        ApplicationUser applicationUser = new ApplicationUser();
         return applicationUser;
     }
 
@@ -114,8 +106,6 @@ class ApplicationUserResourceIT {
         List<ApplicationUser> applicationUserList = applicationUserRepository.findAll();
         assertThat(applicationUserList).hasSize(databaseSizeBeforeCreate + 1);
         ApplicationUser testApplicationUser = applicationUserList.get(applicationUserList.size() - 1);
-        assertThat(testApplicationUser.getProvinceId()).isEqualTo(DEFAULT_PROVINCE_ID);
-        assertThat(testApplicationUser.getDistrictId()).isEqualTo(DEFAULT_DISTRICT_ID);
     }
 
     @Test
@@ -149,9 +139,7 @@ class ApplicationUserResourceIT {
             .perform(get(ENTITY_API_URL + "?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(applicationUser.getId().intValue())))
-            .andExpect(jsonPath("$.[*].provinceId").value(hasItem(DEFAULT_PROVINCE_ID.intValue())))
-            .andExpect(jsonPath("$.[*].districtId").value(hasItem(DEFAULT_DISTRICT_ID.intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(applicationUser.getId().intValue())));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -182,9 +170,7 @@ class ApplicationUserResourceIT {
             .perform(get(ENTITY_API_URL_ID, applicationUser.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(applicationUser.getId().intValue()))
-            .andExpect(jsonPath("$.provinceId").value(DEFAULT_PROVINCE_ID.intValue()))
-            .andExpect(jsonPath("$.districtId").value(DEFAULT_DISTRICT_ID.intValue()));
+            .andExpect(jsonPath("$.id").value(applicationUser.getId().intValue()));
     }
 
     @Test
@@ -203,188 +189,6 @@ class ApplicationUserResourceIT {
 
         defaultApplicationUserShouldBeFound("id.lessThanOrEqual=" + id);
         defaultApplicationUserShouldNotBeFound("id.lessThan=" + id);
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByProvinceIdIsEqualToSomething() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where provinceId equals to DEFAULT_PROVINCE_ID
-        defaultApplicationUserShouldBeFound("provinceId.equals=" + DEFAULT_PROVINCE_ID);
-
-        // Get all the applicationUserList where provinceId equals to UPDATED_PROVINCE_ID
-        defaultApplicationUserShouldNotBeFound("provinceId.equals=" + UPDATED_PROVINCE_ID);
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByProvinceIdIsInShouldWork() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where provinceId in DEFAULT_PROVINCE_ID or UPDATED_PROVINCE_ID
-        defaultApplicationUserShouldBeFound("provinceId.in=" + DEFAULT_PROVINCE_ID + "," + UPDATED_PROVINCE_ID);
-
-        // Get all the applicationUserList where provinceId equals to UPDATED_PROVINCE_ID
-        defaultApplicationUserShouldNotBeFound("provinceId.in=" + UPDATED_PROVINCE_ID);
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByProvinceIdIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where provinceId is not null
-        defaultApplicationUserShouldBeFound("provinceId.specified=true");
-
-        // Get all the applicationUserList where provinceId is null
-        defaultApplicationUserShouldNotBeFound("provinceId.specified=false");
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByProvinceIdIsGreaterThanOrEqualToSomething() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where provinceId is greater than or equal to DEFAULT_PROVINCE_ID
-        defaultApplicationUserShouldBeFound("provinceId.greaterThanOrEqual=" + DEFAULT_PROVINCE_ID);
-
-        // Get all the applicationUserList where provinceId is greater than or equal to UPDATED_PROVINCE_ID
-        defaultApplicationUserShouldNotBeFound("provinceId.greaterThanOrEqual=" + UPDATED_PROVINCE_ID);
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByProvinceIdIsLessThanOrEqualToSomething() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where provinceId is less than or equal to DEFAULT_PROVINCE_ID
-        defaultApplicationUserShouldBeFound("provinceId.lessThanOrEqual=" + DEFAULT_PROVINCE_ID);
-
-        // Get all the applicationUserList where provinceId is less than or equal to SMALLER_PROVINCE_ID
-        defaultApplicationUserShouldNotBeFound("provinceId.lessThanOrEqual=" + SMALLER_PROVINCE_ID);
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByProvinceIdIsLessThanSomething() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where provinceId is less than DEFAULT_PROVINCE_ID
-        defaultApplicationUserShouldNotBeFound("provinceId.lessThan=" + DEFAULT_PROVINCE_ID);
-
-        // Get all the applicationUserList where provinceId is less than UPDATED_PROVINCE_ID
-        defaultApplicationUserShouldBeFound("provinceId.lessThan=" + UPDATED_PROVINCE_ID);
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByProvinceIdIsGreaterThanSomething() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where provinceId is greater than DEFAULT_PROVINCE_ID
-        defaultApplicationUserShouldNotBeFound("provinceId.greaterThan=" + DEFAULT_PROVINCE_ID);
-
-        // Get all the applicationUserList where provinceId is greater than SMALLER_PROVINCE_ID
-        defaultApplicationUserShouldBeFound("provinceId.greaterThan=" + SMALLER_PROVINCE_ID);
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByDistrictIdIsEqualToSomething() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where districtId equals to DEFAULT_DISTRICT_ID
-        defaultApplicationUserShouldBeFound("districtId.equals=" + DEFAULT_DISTRICT_ID);
-
-        // Get all the applicationUserList where districtId equals to UPDATED_DISTRICT_ID
-        defaultApplicationUserShouldNotBeFound("districtId.equals=" + UPDATED_DISTRICT_ID);
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByDistrictIdIsInShouldWork() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where districtId in DEFAULT_DISTRICT_ID or UPDATED_DISTRICT_ID
-        defaultApplicationUserShouldBeFound("districtId.in=" + DEFAULT_DISTRICT_ID + "," + UPDATED_DISTRICT_ID);
-
-        // Get all the applicationUserList where districtId equals to UPDATED_DISTRICT_ID
-        defaultApplicationUserShouldNotBeFound("districtId.in=" + UPDATED_DISTRICT_ID);
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByDistrictIdIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where districtId is not null
-        defaultApplicationUserShouldBeFound("districtId.specified=true");
-
-        // Get all the applicationUserList where districtId is null
-        defaultApplicationUserShouldNotBeFound("districtId.specified=false");
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByDistrictIdIsGreaterThanOrEqualToSomething() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where districtId is greater than or equal to DEFAULT_DISTRICT_ID
-        defaultApplicationUserShouldBeFound("districtId.greaterThanOrEqual=" + DEFAULT_DISTRICT_ID);
-
-        // Get all the applicationUserList where districtId is greater than or equal to UPDATED_DISTRICT_ID
-        defaultApplicationUserShouldNotBeFound("districtId.greaterThanOrEqual=" + UPDATED_DISTRICT_ID);
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByDistrictIdIsLessThanOrEqualToSomething() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where districtId is less than or equal to DEFAULT_DISTRICT_ID
-        defaultApplicationUserShouldBeFound("districtId.lessThanOrEqual=" + DEFAULT_DISTRICT_ID);
-
-        // Get all the applicationUserList where districtId is less than or equal to SMALLER_DISTRICT_ID
-        defaultApplicationUserShouldNotBeFound("districtId.lessThanOrEqual=" + SMALLER_DISTRICT_ID);
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByDistrictIdIsLessThanSomething() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where districtId is less than DEFAULT_DISTRICT_ID
-        defaultApplicationUserShouldNotBeFound("districtId.lessThan=" + DEFAULT_DISTRICT_ID);
-
-        // Get all the applicationUserList where districtId is less than UPDATED_DISTRICT_ID
-        defaultApplicationUserShouldBeFound("districtId.lessThan=" + UPDATED_DISTRICT_ID);
-    }
-
-    @Test
-    @Transactional
-    void getAllApplicationUsersByDistrictIdIsGreaterThanSomething() throws Exception {
-        // Initialize the database
-        applicationUserRepository.saveAndFlush(applicationUser);
-
-        // Get all the applicationUserList where districtId is greater than DEFAULT_DISTRICT_ID
-        defaultApplicationUserShouldNotBeFound("districtId.greaterThan=" + DEFAULT_DISTRICT_ID);
-
-        // Get all the applicationUserList where districtId is greater than SMALLER_DISTRICT_ID
-        defaultApplicationUserShouldBeFound("districtId.greaterThan=" + SMALLER_DISTRICT_ID);
     }
 
     @Test
@@ -461,9 +265,7 @@ class ApplicationUserResourceIT {
             .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(applicationUser.getId().intValue())))
-            .andExpect(jsonPath("$.[*].provinceId").value(hasItem(DEFAULT_PROVINCE_ID.intValue())))
-            .andExpect(jsonPath("$.[*].districtId").value(hasItem(DEFAULT_DISTRICT_ID.intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(applicationUser.getId().intValue())));
 
         // Check, that the count call also returns 1
         restApplicationUserMockMvc
@@ -511,7 +313,6 @@ class ApplicationUserResourceIT {
         ApplicationUser updatedApplicationUser = applicationUserRepository.findById(applicationUser.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedApplicationUser are not directly saved in db
         em.detach(updatedApplicationUser);
-        updatedApplicationUser.provinceId(UPDATED_PROVINCE_ID).districtId(UPDATED_DISTRICT_ID);
 
         restApplicationUserMockMvc
             .perform(
@@ -525,8 +326,6 @@ class ApplicationUserResourceIT {
         List<ApplicationUser> applicationUserList = applicationUserRepository.findAll();
         assertThat(applicationUserList).hasSize(databaseSizeBeforeUpdate);
         ApplicationUser testApplicationUser = applicationUserList.get(applicationUserList.size() - 1);
-        assertThat(testApplicationUser.getProvinceId()).isEqualTo(UPDATED_PROVINCE_ID);
-        assertThat(testApplicationUser.getDistrictId()).isEqualTo(UPDATED_DISTRICT_ID);
     }
 
     @Test
@@ -599,8 +398,6 @@ class ApplicationUserResourceIT {
         ApplicationUser partialUpdatedApplicationUser = new ApplicationUser();
         partialUpdatedApplicationUser.setId(applicationUser.getId());
 
-        partialUpdatedApplicationUser.districtId(UPDATED_DISTRICT_ID);
-
         restApplicationUserMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedApplicationUser.getId())
@@ -613,8 +410,6 @@ class ApplicationUserResourceIT {
         List<ApplicationUser> applicationUserList = applicationUserRepository.findAll();
         assertThat(applicationUserList).hasSize(databaseSizeBeforeUpdate);
         ApplicationUser testApplicationUser = applicationUserList.get(applicationUserList.size() - 1);
-        assertThat(testApplicationUser.getProvinceId()).isEqualTo(DEFAULT_PROVINCE_ID);
-        assertThat(testApplicationUser.getDistrictId()).isEqualTo(UPDATED_DISTRICT_ID);
     }
 
     @Test
@@ -629,8 +424,6 @@ class ApplicationUserResourceIT {
         ApplicationUser partialUpdatedApplicationUser = new ApplicationUser();
         partialUpdatedApplicationUser.setId(applicationUser.getId());
 
-        partialUpdatedApplicationUser.provinceId(UPDATED_PROVINCE_ID).districtId(UPDATED_DISTRICT_ID);
-
         restApplicationUserMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedApplicationUser.getId())
@@ -643,8 +436,6 @@ class ApplicationUserResourceIT {
         List<ApplicationUser> applicationUserList = applicationUserRepository.findAll();
         assertThat(applicationUserList).hasSize(databaseSizeBeforeUpdate);
         ApplicationUser testApplicationUser = applicationUserList.get(applicationUserList.size() - 1);
-        assertThat(testApplicationUser.getProvinceId()).isEqualTo(UPDATED_PROVINCE_ID);
-        assertThat(testApplicationUser.getDistrictId()).isEqualTo(UPDATED_DISTRICT_ID);
     }
 
     @Test

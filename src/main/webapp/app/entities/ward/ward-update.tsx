@@ -112,8 +112,28 @@ export const WardUpdate = () => {
                   required: { value: true, message: translate('entity.validation.required') },
                 }}
               />
-              <ValidatedField label={translate('jhipsterApp.ward.lng')} id="ward-lng" name="lng" data-cy="lng" type="text" />
-              <ValidatedField label={translate('jhipsterApp.ward.lat')} id="ward-lat" name="lat" data-cy="lat" type="text" />
+              <ValidatedField
+                label={translate('jhipsterApp.ward.lng')}
+                id="ward-lng"
+                name="lng"
+                data-cy="lng"
+                type="text"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                  validate: v => isNumber(v) || translate('entity.validation.number'),
+                }}
+              />
+              <ValidatedField
+                label={translate('jhipsterApp.ward.lat')}
+                id="ward-lat"
+                name="lat"
+                data-cy="lat"
+                type="text"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                  validate: v => isNumber(v) || translate('entity.validation.number'),
+                }}
+              />
               <ValidatedField
                 label={translate('jhipsterApp.ward.createdDate')}
                 id="ward-createdDate"

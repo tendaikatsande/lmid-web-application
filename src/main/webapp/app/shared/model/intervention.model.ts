@@ -6,11 +6,11 @@ import { IWard } from 'app/shared/model/ward.model';
 
 export interface IIntervention {
   id?: number;
-  startDate?: string | null;
-  targetArea?: number | null;
-  targetDate?: string | null;
-  achievedArea?: number | null;
-  costOfIntervention?: number | null;
+  startDate?: string;
+  targetArea?: number;
+  targetDate?: string;
+  achievedArea?: number;
+  costOfIntervention?: number;
   createdDate?: string | null;
   lastModifiedDate?: string | null;
   type?: IInterventionType | null;

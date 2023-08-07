@@ -10,15 +10,18 @@
     },
     {
       "fieldName": "description",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "startDate",
-      "fieldType": "LocalDate"
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "endDate",
-      "fieldType": "LocalDate"
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "createdDate",

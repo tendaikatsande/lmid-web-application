@@ -26,7 +26,7 @@ entity Project {
 }
 
 entity Funder {
-    name String required required,
+    name String required,
     createdDate Instant,
     lastModifiedDate Instant
 }
@@ -87,7 +87,7 @@ relationship OneToOne {
 
 
 filter *
-search * with elasticsearch
+//search * with elasticsearch
 paginate * with pagination
 
 

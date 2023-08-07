@@ -126,6 +126,9 @@ export const InterventionUpdate = () => {
                 name="startDate"
                 data-cy="startDate"
                 type="date"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                }}
               />
               <ValidatedField
                 label={translate('jhipsterApp.intervention.targetArea')}
@@ -133,6 +136,10 @@ export const InterventionUpdate = () => {
                 name="targetArea"
                 data-cy="targetArea"
                 type="text"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                  validate: v => isNumber(v) || translate('entity.validation.number'),
+                }}
               />
               <ValidatedField
                 label={translate('jhipsterApp.intervention.targetDate')}
@@ -140,6 +147,9 @@ export const InterventionUpdate = () => {
                 name="targetDate"
                 data-cy="targetDate"
                 type="date"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                }}
               />
               <ValidatedField
                 label={translate('jhipsterApp.intervention.achievedArea')}
@@ -147,6 +157,10 @@ export const InterventionUpdate = () => {
                 name="achievedArea"
                 data-cy="achievedArea"
                 type="text"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                  validate: v => isNumber(v) || translate('entity.validation.number'),
+                }}
               />
               <ValidatedField
                 label={translate('jhipsterApp.intervention.costOfIntervention')}
@@ -154,6 +168,10 @@ export const InterventionUpdate = () => {
                 name="costOfIntervention"
                 data-cy="costOfIntervention"
                 type="text"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                  validate: v => isNumber(v) || translate('entity.validation.number'),
+                }}
               />
               <ValidatedField
                 label={translate('jhipsterApp.intervention.createdDate')}

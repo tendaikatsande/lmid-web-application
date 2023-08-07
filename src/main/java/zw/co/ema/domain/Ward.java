@@ -29,10 +29,12 @@ public class Ward implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "lng")
+    @NotNull
+    @Column(name = "lng", nullable = false)
     private Float lng;
 
-    @Column(name = "lat")
+    @NotNull
+    @Column(name = "lat", nullable = false)
     private Float lat;
 
     @Column(name = "created_date")

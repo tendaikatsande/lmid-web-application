@@ -159,6 +159,40 @@ class ProvinceResourceIT {
 
     @Test
     @Transactional
+    void checkLngIsRequired() throws Exception {
+        int databaseSizeBeforeTest = provinceRepository.findAll().size();
+        // set the field null
+        province.setLng(null);
+
+        // Create the Province, which fails.
+
+        restProvinceMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(province)))
+            .andExpect(status().isBadRequest());
+
+        List<Province> provinceList = provinceRepository.findAll();
+        assertThat(provinceList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkLatIsRequired() throws Exception {
+        int databaseSizeBeforeTest = provinceRepository.findAll().size();
+        // set the field null
+        province.setLat(null);
+
+        // Create the Province, which fails.
+
+        restProvinceMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(province)))
+            .andExpect(status().isBadRequest());
+
+        List<Province> provinceList = provinceRepository.findAll();
+        assertThat(provinceList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void getAllProvinces() throws Exception {
         // Initialize the database
         provinceRepository.saveAndFlush(province);

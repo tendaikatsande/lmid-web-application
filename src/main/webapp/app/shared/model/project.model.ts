@@ -3,9 +3,9 @@ import dayjs from 'dayjs';
 export interface IProject {
   id?: number;
   name?: string;
-  description?: string | null;
-  startDate?: string | null;
-  endDate?: string | null;
+  description?: string;
+  startDate?: string;
+  endDate?: string;
   createdDate?: string | null;
   lastModifiedDate?: string | null;
 }

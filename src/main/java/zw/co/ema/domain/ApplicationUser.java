@@ -12,7 +12,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 @Table(name = "application_user")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-
+@SuppressWarnings("common-java:DuplicatedBlocks")
 public class ApplicationUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,11 +48,6 @@ public class ApplicationUser implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-
-
-
-
 
     public User getUser() {
         return this.user;
@@ -112,14 +107,11 @@ public class ApplicationUser implements Serializable {
         return getClass().hashCode();
     }
 
+    // prettier-ignore
     @Override
     public String toString() {
         return "ApplicationUser{" +
-            "id=" + id +
-            ", user=" + user +
-            ", province=" + province +
-            ", district=" + district +
-            '}';
+            "id=" + getId() +
+            "}";
     }
-
 }

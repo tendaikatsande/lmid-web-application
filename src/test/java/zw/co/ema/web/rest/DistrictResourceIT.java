@@ -175,6 +175,40 @@ class DistrictResourceIT {
 
     @Test
     @Transactional
+    void checkLngIsRequired() throws Exception {
+        int databaseSizeBeforeTest = districtRepository.findAll().size();
+        // set the field null
+        district.setLng(null);
+
+        // Create the District, which fails.
+
+        restDistrictMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(district)))
+            .andExpect(status().isBadRequest());
+
+        List<District> districtList = districtRepository.findAll();
+        assertThat(districtList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkLatIsRequired() throws Exception {
+        int databaseSizeBeforeTest = districtRepository.findAll().size();
+        // set the field null
+        district.setLat(null);
+
+        // Create the District, which fails.
+
+        restDistrictMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(district)))
+            .andExpect(status().isBadRequest());
+
+        List<District> districtList = districtRepository.findAll();
+        assertThat(districtList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void getAllDistricts() throws Exception {
         // Initialize the database
         districtRepository.saveAndFlush(district);

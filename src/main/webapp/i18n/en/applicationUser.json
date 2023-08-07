@@ -17,9 +17,7 @@
       "detail": {
         "title": "Application User"
       },
-      "id": "ID",
-      "provinceId": "Province Id",
-      "districtId": "District Id",
+      "id": "Id",
       "user": "User",
       "province": "Province",
       "district": "District"

@@ -85,12 +85,6 @@ public class ApplicationUserQueryService extends QueryService<ApplicationUser> {
             if (criteria.getId() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getId(), ApplicationUser_.id));
             }
-            if (criteria.getProvinceId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getProvinceId(), ApplicationUser_.provinceId));
-            }
-            if (criteria.getDistrictId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getDistrictId(), ApplicationUser_.districtId));
-            }
             if (criteria.getUserId() != null) {
                 specification =
                     specification.and(

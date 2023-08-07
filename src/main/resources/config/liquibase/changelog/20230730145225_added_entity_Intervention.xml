@@ -15,19 +15,19 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="start_date" type="date">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="target_area" type="integer">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="target_date" type="date">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="achieved_area" type="integer">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="cost_of_intervention" type="decimal(21,2)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="created_date" type="${datetimeType}">
                 <constraints nullable="true" />

@@ -27,22 +27,10 @@ export const ApplicationUserDetail = () => {
         <dl className="jh-entity-details">
           <dt>
             <span id="id">
-              <Translate contentKey="global.field.id">ID</Translate>
+              <Translate contentKey="jhipsterApp.applicationUser.id">Id</Translate>
             </span>
           </dt>
           <dd>{applicationUserEntity.id}</dd>
-          <dt>
-            <span id="provinceId">
-              <Translate contentKey="jhipsterApp.applicationUser.provinceId">Province Id</Translate>
-            </span>
-          </dt>
-          <dd>{applicationUserEntity.provinceId}</dd>
-          <dt>
-            <span id="districtId">
-              <Translate contentKey="jhipsterApp.applicationUser.districtId">District Id</Translate>
-            </span>
-          </dt>
-          <dd>{applicationUserEntity.districtId}</dd>
           <dt>
             <Translate contentKey="jhipsterApp.applicationUser.user">User</Translate>
           </dt>
