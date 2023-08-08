@@ -4,8 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert, Row, Col, Fo
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { type FieldError, useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
-import login from '../login/login';
-
+import { login } from 'app/shared/reducers/authentication';
 export interface ILoginModalProps {
   showModal: boolean;
   loginError: boolean;
@@ -14,30 +13,21 @@ export interface ILoginModalProps {
 }
 
 export default function LoginPage() {
+  const loginError = useAppSelector(state => state.authentication.loginError);
   const dispatch = useAppDispatch();
   const isAuthenticated = useAppSelector(state => state.authentication.isAuthenticated);
-  const loginError = useAppSelector(state => state.authentication.loginError);
-  const showModalLogin = useAppSelector(state => state.authentication.showModalLogin);
-  const [showModal, setShowModal] = useState(showModalLogin);
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    setShowModal(true);
-  }, []);
 
   const {
-    handleSubmit,
     register,
     formState: { errors, touchedFields },
   } = useForm({ mode: 'onTouched' });
-  const handleLoginSubmit = (e: any) => {
-    // dispatch(login(username, password, rememberMe));
+  const handleLoginSubmit = ({ username, password, rememberMe }: any) => {
+    dispatch(login(username, password, rememberMe));
   };
   return (
-    <div className="container dflex justify-content-center align-items-center w-full">
+    <div className="container d-flex justify-content-center align-items-center w-full">
       {' '}
-      <Form onSubmit={handleLoginSubmit} className='col-4'>
+      <Form onSubmit={handleLoginSubmit} className="col-4">
         <Row>
           <Col md="12">
             {loginError ? (
