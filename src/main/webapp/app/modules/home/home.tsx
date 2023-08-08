@@ -23,14 +23,14 @@ export const Home = () => {
         {account?.login ? (
           <div>
             <MapContainer center={[-17.824858, 31.053028]} zoom={13} scrollWheelZoom={true} style={{ width: '100%', height: '700px' }}>
-              <TileLayer
+              {/* <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-              {/* <TileLayer
+            /> */}
+              <TileLayer
                 url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png"
                 attribution="Map by <a href='http://stamen.com' target='_blank'>Stamen Design</a> | &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank'>OpenStreetMap</a> contributors"
-              /> */}
+              />
               <Marker position={[-17.824858, 31.053028]}>
                 <Popup>
                   A pretty CSS3 popup. <br /> Easily customizable.
