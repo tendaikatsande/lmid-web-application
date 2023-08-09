@@ -1,7 +1,7 @@
 {
   "home": {
-    "title": "Welcome, Java Hipster!",
-    "subtitle": "This is your homepage",
+    "title": "Land Management Interventions",
+    "subtitle": "Interventions carried across the country",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },

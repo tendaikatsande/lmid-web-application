@@ -99,8 +99,8 @@ module.exports = async options =>
         }
       ),
       new WebpackNotifierPlugin({
-        title: 'JHipster',
-        contentImage: path.join(__dirname, 'logo-jhipster.png'),
+        title: 'LMID',
+        contentImage: path.join(__dirname, 'logo-jhipster.jpeg'),
       }),
     ].filter(Boolean),
   });
