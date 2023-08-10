@@ -10,8 +10,45 @@ import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-u
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
 import { getEntities } from './intervention.reducer';
+import { FaEye, FaPlusCircle } from 'react-icons/fa';
+import FilterForm from 'app/shared/layout/forms/filter-form';
 
 export const Intervention = () => {
+  const initialFieldData = [
+    {
+      fieldName: 'startDate',
+      fieldType: 'LocalDate',
+      fieldValidateRules: ['required'],
+    },
+    {
+      fieldName: 'targetArea',
+      fieldType: 'Integer',
+      fieldValidateRules: ['required'],
+    },
+    {
+      fieldName: 'targetDate',
+      fieldType: 'LocalDate',
+      fieldValidateRules: ['required'],
+    },
+    {
+      fieldName: 'achievedArea',
+      fieldType: 'Integer',
+      fieldValidateRules: ['required'],
+    },
+    {
+      fieldName: 'costOfIntervention',
+      fieldType: 'BigDecimal',
+      fieldValidateRules: ['required'],
+    },
+    {
+      fieldName: 'createdDate',
+      fieldType: 'Instant',
+    },
+    {
+      fieldName: 'lastModifiedDate',
+      fieldType: 'Instant',
+    },
+  ];
   const dispatch = useAppDispatch();
 
   const location = useLocation();
@@ -80,6 +117,10 @@ export const Intervention = () => {
     sortEntities();
   };
 
+  const handleFilter = data => {
+    sortEntities();
+  };
+
   const getSortIconByFieldName = (fieldName: string) => {
     const sortFieldName = paginationState.sort;
     const order = paginationState.order;
@@ -100,15 +141,19 @@ export const Intervention = () => {
             <Translate contentKey="jhipsterApp.intervention.home.refreshListLabel">Refresh List</Translate>
           </Button>
           <Link to="/intervention/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
-            <FontAwesomeIcon icon="plus" />
+            <FaPlusCircle />
             &nbsp;
             <Translate contentKey="jhipsterApp.intervention.home.createLabel">Create new Intervention</Translate>
           </Link>
         </div>
       </h2>
+      <div className="mb-4">
+        <FilterForm initialFieldData={initialFieldData} onFormSubmit={formData => handleFilter(formData)} />
+      </div>
+
       <div className="table-responsive">
         {interventionList && interventionList.length > 0 ? (
-          <Table responsive>
+          <Table responsive bordered striped size="sm">
             <thead>
               <tr>
                 <th className="hand" onClick={sort('id')}>
@@ -118,13 +163,14 @@ export const Intervention = () => {
                   <Translate contentKey="jhipsterApp.intervention.startDate">Start Date</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('startDate')} />
                 </th>
-                <th className="hand" onClick={sort('targetArea')}>
-                  <Translate contentKey="jhipsterApp.intervention.targetArea">Target Area</Translate>{' '}
-                  <FontAwesomeIcon icon={getSortIconByFieldName('targetArea')} />
-                </th>
+
                 <th className="hand" onClick={sort('targetDate')}>
                   <Translate contentKey="jhipsterApp.intervention.targetDate">Target Date</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('targetDate')} />
+                </th>
+                <th className="hand" onClick={sort('targetArea')}>
+                  <Translate contentKey="jhipsterApp.intervention.targetArea">Target Area</Translate>{' '}
+                  <FontAwesomeIcon icon={getSortIconByFieldName('targetArea')} />
                 </th>
                 <th className="hand" onClick={sort('achievedArea')}>
                   <Translate contentKey="jhipsterApp.intervention.achievedArea">Achieved Area</Translate>{' '}
@@ -134,15 +180,8 @@ export const Intervention = () => {
                   <Translate contentKey="jhipsterApp.intervention.costOfIntervention">Cost Of Intervention</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('costOfIntervention')} />
                 </th>
-                <th className="hand" onClick={sort('createdDate')}>
-                  <Translate contentKey="jhipsterApp.intervention.createdDate">Created Date</Translate>{' '}
-                  <FontAwesomeIcon icon={getSortIconByFieldName('createdDate')} />
-                </th>
-                <th className="hand" onClick={sort('lastModifiedDate')}>
-                  <Translate contentKey="jhipsterApp.intervention.lastModifiedDate">Last Modified Date</Translate>{' '}
-                  <FontAwesomeIcon icon={getSortIconByFieldName('lastModifiedDate')} />
-                </th>
-                <th>
+
+                {/* <th>
                   <Translate contentKey="jhipsterApp.intervention.type">Type</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
@@ -153,7 +192,7 @@ export const Intervention = () => {
                 </th>
                 <th>
                   <Translate contentKey="jhipsterApp.intervention.ward">Ward</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
+                </th> */}
                 <th />
               </tr>
             </thead>
@@ -170,63 +209,45 @@ export const Intervention = () => {
                       <TextFormat type="date" value={intervention.startDate} format={APP_LOCAL_DATE_FORMAT} />
                     ) : null}
                   </td>
-                  <td>{intervention.targetArea}</td>
                   <td>
                     {intervention.targetDate ? (
                       <TextFormat type="date" value={intervention.targetDate} format={APP_LOCAL_DATE_FORMAT} />
                     ) : null}
                   </td>
-                  <td>{intervention.achievedArea}</td>
-                  <td>{intervention.costOfIntervention}</td>
-                  <td>
-                    {intervention.createdDate ? <TextFormat type="date" value={intervention.createdDate} format={APP_DATE_FORMAT} /> : null}
-                  </td>
-                  <td>
-                    {intervention.lastModifiedDate ? (
-                      <TextFormat type="date" value={intervention.lastModifiedDate} format={APP_DATE_FORMAT} />
-                    ) : null}
-                  </td>
-                  <td>
+                  <td>{intervention.targetArea}ha</td>
+                  <td>{intervention.achievedArea}ha</td>
+                  <td>${intervention.costOfIntervention}</td>
+
+                  {/* <td>
                     {intervention.type ? <Link to={`/intervention-type/${intervention.type.id}`}>{intervention.type.name}</Link> : ''}
                   </td>
                   <td>{intervention.project ? <Link to={`/project/${intervention.project.id}`}>{intervention.project.name}</Link> : ''}</td>
                   <td>
                     {intervention.location ? <Link to={`/district/${intervention.location.id}`}>{intervention.location.name}</Link> : ''}
                   </td>
-                  <td>{intervention.ward ? <Link to={`/ward/${intervention.ward.id}`}>{intervention.ward.name}</Link> : ''}</td>
+                  <td>{intervention.ward ? <Link to={`/ward/${intervention.ward.id}`}>{intervention.ward.name}</Link> : ''}</td> */}
                   <td className="text-end">
-                    <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`/intervention/${intervention.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.view">View</Translate>
-                        </span>
-                      </Button>
-                      <Button
-                        tag={Link}
-                        to={`/intervention/${intervention.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
-                        color="primary"
-                        size="sm"
-                        data-cy="entityEditButton"
-                      >
-                        <FontAwesomeIcon icon="pencil-alt" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.edit">Edit</Translate>
-                        </span>
-                      </Button>
-                      <Button
-                        tag={Link}
-                        to={`/intervention/${intervention.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
-                        color="danger"
-                        size="sm"
-                        data-cy="entityDeleteButton"
-                      >
-                        <FontAwesomeIcon icon="trash" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.delete">Delete</Translate>
-                        </span>
-                      </Button>
-                    </div>
+                    <Button tag={Link} to={`/intervention/${intervention.id}`} color="info" size="sm" data-cy="entityDetailsButton">
+                      <FaEye />
+                    </Button>
+                    <Button
+                      tag={Link}
+                      to={`/intervention/${intervention.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                      color="primary"
+                      size="sm"
+                      data-cy="entityEditButton"
+                    >
+                      <FontAwesomeIcon icon="pencil-alt" />{' '}
+                    </Button>
+                    <Button
+                      tag={Link}
+                      to={`/intervention/${intervention.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                      color="danger"
+                      size="sm"
+                      data-cy="entityDeleteButton"
+                    >
+                      <FontAwesomeIcon icon="trash" />{' '}
+                    </Button>
                   </td>
                 </tr>
               ))}

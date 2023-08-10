@@ -6,8 +6,8 @@ import { NavLink as Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const BrandIcon = props => (
-  <div {...props} className="brand-icon">
-    <img src="content/images/logo-jhipster.jpeg" className='rounded-circle' alt="Logo" />
+  <div {...props} className="brand-icon ">
+    <img src="content/images/logo-jhipster.jpeg" className="rounded-circle" alt="Logo" />
   </div>
 );
 
