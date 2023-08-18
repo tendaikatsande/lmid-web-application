@@ -2,7 +2,7 @@
 
 version: '3'
 services:
-  app:
+  lmid:
     image: jhipster
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
