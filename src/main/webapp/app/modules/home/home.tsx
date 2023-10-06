@@ -24,20 +24,6 @@ export const Home = () => {
   };
   return (
     <Row>
-      <Row>
-        <Col>
-          <form onSubmit={handleSubmit} className="col mt-3">
-            <div className="form-group col-6">
-              <label htmlFor="dateFilter">Date Filter</label>
-              <input type="date" className="form-control" id="dateFilter" value={selectedDate || ''} onChange={handleDateChange} />
-            </div>
-
-            <button type="submit" className="btn btn-primary">
-              Filter
-            </button>
-          </form>
-        </Col>
-      </Row>
       <Col>
         <h2>
           <Translate contentKey="home.title"></Translate>
